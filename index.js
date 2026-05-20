@@ -112,7 +112,6 @@ clipe.forEach((card) => {
 
     const videoClipe = card.querySelector("video");
 
-    // Preview ao passar o mouse
     card.addEventListener("mouseenter", () => {
 
         videoClipe.play();
@@ -133,8 +132,9 @@ clipe.forEach((card) => {
 
     });
 
-    // Entrar em fullscreen
-    card.addEventListener("click", () => {
+card.addEventListener("click", () => {
+
+    if (!document.fullscreenElement) {
 
         videoClipe.muted = false;
 
@@ -143,33 +143,21 @@ clipe.forEach((card) => {
         videoClipe.play();
 
         if (videoClipe.requestFullscreen) {
-
             videoClipe.requestFullscreen();
-
         }
 
-    });
+    }
 
-    // Pausar / despausar clicando no vídeo
+});
+
     videoClipe.addEventListener("click", (e) => {
 
         e.preventDefault();
-
-        if (videoClipe.paused) {
-
-            videoClipe.play();
-
-        } else {
-
-            videoClipe.pause();
-
-        }
 
     });
 
 });
 
-// Ao sair do fullscreen
 document.addEventListener("fullscreenchange", () => {
 
     if (!document.fullscreenElement) {
@@ -178,9 +166,9 @@ document.addEventListener("fullscreenchange", () => {
 
             const videoClipe = card.querySelector("video");
 
-            videoClipe.pause();
-
             videoClipe.currentTime = 0;
+
+            videoClipe.pause();
 
         });
 

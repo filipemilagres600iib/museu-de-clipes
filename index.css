@@ -1,0 +1,699 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+#fade-in {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9999;
+    animation: fadeOut 2.0s ease forwards;
+}
+
+.botao-voltar {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.botao-voltar:hover {
+    transform: scale(1.05);
+
+    text-shadow:
+    0 0 10px white,
+    0 0 20px white;
+}
+
+.video-fundo {
+    position: absolute;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    object-fit: cover;
+
+    z-index: 1;
+
+    filter: blur(20px);
+
+    transform: scale(1.05);
+}
+
+
+.tela::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 2;
+}
+
+/* //////////////////////////////////////// FADE IN/OUT DE TELAS //////////////////////////////////////// */
+
+.tela {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+.tela.ativa {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* //////////////////////////////////////// TELA INICIAL //////////////////////////////////////// */
+
+#tela-inicial {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tela-inicial video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+    filter: blur(15px);
+    transform: scale(1.05);
+}
+
+#tela-inicial::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.conteudo {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+}
+
+.titulo-boas-vindas {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    letter-spacing: 4px;
+}
+
+.titulo-principal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: 10px;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.botao-entrar {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    letter-spacing: 10px;
+    cursor: pointer;
+    animation: brilho 1.8s infinite;
+    transition: transform 0.3s ease;
+}
+
+.botao-entrar:hover {
+    transform: translateX(-50%) scale(1.25);
+}
+
+.botao-entrar:active{
+    transform: translateX(-50%) scale(1);
+}
+
+/* //////////////////////////////////////// ANIMAÇÕES //////////////////////////////////////// */
+
+@keyframes brilho {
+    0%,
+    100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        opacity: 0.8;
+    }
+
+    50% {
+        color: white;
+        text-shadow:
+            0 0 10px white,
+            0 0 20px white,
+            0 0 40px white;
+        opacity: 1;
+    }
+}
+
+@keyframes brilhoDourado {
+  to {
+    background-position: 100% center;
+  }
+}
+
+@keyframes brilhoAzul {
+  to {
+    background-position: 300% center;
+  }
+}
+
+@keyframes fadeOut {
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* //////////////////////////////////////// TELA DO MENU PRINCIPAL //////////////////////////////////////// */
+
+.titulo-menu-principal {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+
+.menu-opcoes {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    z-index: 3;
+}
+
+.opcao {
+    width: 25%;
+
+    display: flex;
+    justify-content: center;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+.hover-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#opcao-favoritos{
+    color: rgb(194, 165, 0);
+
+    transition: 0.3s ease;
+    
+    /* Gradiente Dourado (ex: ouro claro, ouro escuro, ouro claro) */
+    background: linear-gradient(
+        to right, 
+        #bf953f, 
+        #fcf6ba, 
+        #b38728, 
+        #fbf5b7, 
+        #cc973b
+    );
+    
+    /* Tamanho aumentado para a animação funcionar */
+    background-size: 200% auto;
+    
+    /* Aplica o gradiente dentro do texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Animação */
+    animation: brilhoDourado 3s linear infinite;
+}
+
+#opcao-sobre {
+
+    transition: 0.3s ease;
+
+    background: linear-gradient(
+        90deg,
+        #6fb7f5 0%,
+        #108bc0 25%,
+        #2d79d6 50%,
+        #38bdf8 75%,
+        #73b4ec 100%
+    );
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: brilhoAzul 6s linear infinite;
+}
+
+.hover-area:hover #opcao-favoritos {
+
+    text-shadow:
+    0 0 10px rgb(194, 165, 0),
+    0 0 20px rgb(194, 165, 0);
+
+    color: rgb(194, 165, 0);
+}
+
+.hover-area:hover #opcao-sobre {
+
+    text-shadow:
+    0 0 10px #38bdf8,
+    0 0 20px #38bdf8;
+
+    color: #38bdf8;
+}
+
+.texto-opcao {
+    color: white;
+
+    transition: 0.3s ease;
+
+    cursor: pointer;
+}
+
+.hover-area:hover .texto-opcao {
+
+    transform: translateY(-8px) scale(1.05);
+
+    text-shadow:
+    0 0 10px white
+}
+
+.texto-opcao:active {
+    opacity: .5;
+}
+
+.texto-oculto {
+    font-size: 14px;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.7);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    cursor: default;
+    pointer-events: none;
+}
+
+.hover-area:hover .texto-oculto {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/* //////////////////////////////////////// TELA DOS FAVORITOS //////////////////////////////////////// */
+
+#titulo-menu-favoritos {
+    color: rgb(194, 165, 0);
+
+    transition: 0.3s ease;
+    
+    /* Gradiente Dourado (ex: ouro claro, ouro escuro, ouro claro) */
+    background: linear-gradient(
+        to right, 
+        #bf953f, 
+        #fcf6ba, 
+        #b38728, 
+        #fbf5b7, 
+        #cc973b
+    );
+    
+    /* Tamanho aumentado para a animação funcionar */
+    background-size: 200% auto;
+    
+    /* Aplica o gradiente dentro do texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Animação */
+    animation: brilhoDourado 3s linear infinite;
+}
+
+.galeria-clipes {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 40px;
+
+    width: 100%;
+    height: 100vh;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+}
+
+.card-clipe {
+    width: 320px;
+
+    flex: 0 0 auto;
+
+    transition: .3s ease;
+
+    cursor: pointer;
+}
+
+.card-clipe video {
+    width: 100%;
+
+    border-radius: 20px;
+
+    border: 2px solid rgba(255,255,255,.2);
+
+    object-fit: cover;
+}
+
+.card-clipe video:fullscreen {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.card-clipe p {
+    margin-top: 15px;
+
+    color: white;
+
+    font-family: 'Orbitron', sans-serif;
+
+    text-align: center;
+}
+
+.card-clipe:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.card-clipe:hover video {
+    border-color: white;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.4);
+}
+
+/* //////////////////////////////////////// TELA DOS CLIPES //////////////////////////////////////// */
+
+/* //////////////////////////////////////// TELA DOS PRINTS //////////////////////////////////////// */
+
+/* //////////////////////////////////////// TELA DO SOBRE //////////////////////////////////////// */
+
+.sobre-container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 100px;
+
+}
+
+.fotos-perfil {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.foto-avatar {
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(255, 255, 255, 0.8);
+
+    object-fit: cover;
+}
+
+.estatisticas-perfil {
+    width: 400px;
+    height: 108px;
+}
+
+.texto-sobre {
+    color: white;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 17px;
+
+    letter-spacing: 2px;
+
+    line-height: 1.8;
+
+    max-width: 800px;
+}
+
+/* ==========================================================================
+   MEDIA QUERY PARA CELULARES (Telas de até 768px de largura)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+   /* 1. AJUSTES GERAIS DE FLUXO */
+    html, body {
+        /* Bloqueia categoricamente qualquer rolagem para os lados no site inteiro */
+        overflow-x: hidden; 
+        max-width: 100vw;
+    }
+
+    body {
+        /* Permite a rolagem vertical global se o conteúdo crescer, mas mata a lateral */
+        overflow-y: auto; 
+    }
+    
+    /* Remove o efeito de escala dos vídeos no celular para eles não vazarem a tela */
+    .video-fundo,
+    #tela-inicial video {
+        transform: scale(1) !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+
+    /* Impede as telas individuais de quebrarem a largura máxima do aparelho */
+    .tela {
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .conteudo {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .botao-voltar {
+        font-size: 14px;
+        top: 4%;
+        left: 6%;
+        z-index: 10;
+    }
+
+    /* 2. TELA INICIAL */
+    .titulo-boas-vindas {
+        font-size: 14px;
+        top: 20%;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    .titulo-principal {
+        font-size: 26px; /* Reduzido para não quebrar linha de forma bizarra */
+        letter-spacing: 4px;
+        width: 90%; /* Margem de respiro nas laterais */
+    }
+
+    .botao-entrar {
+        bottom: 18%;
+        font-size: 16px;
+        letter-spacing: 6px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 3. MENU PRINCIPAL (Mudança de Horizontal para Vertical) */
+    .titulo-menu-principal {
+        font-size: 12px;
+        top: 4%;
+        width: 90%;
+        text-align: center;
+    }
+
+    .menu-opcoes {
+        flex-direction: column;
+        gap: 35px;
+        top: 50%; 
+        transform: translate(-50%, -45%);
+        width: 100%;
+        left: 50%;
+        box-sizing: border-box; /* Garante que paddings/margens não somem no tamanho total */
+    }
+
+    .opcao {
+        width: 100%;
+        font-size: 18px; 
+        letter-spacing: 2px;
+    }
+
+    /* Ajuste do texto oculto para Mobile */
+    .texto-oculto {
+        font-size: 11px;
+        opacity: 0.6; /* Como celular não tem 'hover', ele fica semi-visível fixo */
+        transform: translateY(5px);
+        margin-top: 4px;
+    }
+
+    /* 4. TELA DOS FAVORITOS (Ajuste da Galeria de Vídeos) */
+
+    #titulo-menu-favoritos {
+        position: absolute;
+        top: 5%;
+    }
+
+    .galeria-clipes {
+        height: auto; /* Permite que a galeria cresça para baixo */
+        min-height: 100vh;
+        padding: 100px 20px 40px 20px; /* Espaço para o botão voltar e respiro no fundo */
+        gap: 30px;
+        position: absolute;
+        top: 10%;
+    }
+
+    .card-clipe {
+        width: 100%; /* O card ocupa a largura disponível do celular */
+        max-width: 340px; /* Não deixa o vídeo ficar gigante em celulares maiores */
+    }
+
+    .card-clipe p {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    /* 5. TELA SOBRE (Empilhamento do Perfil) */
+    .sobre-container {
+        flex-direction: column; /* Foto em cima, texto embaixo */
+        gap: 40px;
+        padding: 100px 24px 60px 24px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .foto-avatar {
+        width: 160px; /* Tamanho ideal para telas menores */
+        height: 160px;
+    }
+
+    .estatisticas-perfil {
+        width: 100%;
+        max-width: 320px; /* Garante que a imagem do widget/status não saia da tela */
+        height: auto;
+    }
+
+    .texto-sobre {
+        font-size: 14px;
+        line-height: 1.7;
+        text-align: center; /* Centralizado melhora muito a leitura no celular */
+        padding: 0;
+    }
+bre-container {
+        flex-direction: column; /* Foto em cima, texto embaixo */
+        gap: 40px;
+        padding: 100px 24px 60px 24px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .foto-avatar {
+        width: 160px; /* Tamanho ideal para telas menores */
+        height: 160px;
+    }
+
+    .estatisticas-perfil {
+        width: 100%;
+        max-width: 320px; /* Garante que a imagem do widget/status não saia da tela */
+        height: auto;
+    }
+
+    .texto-sobre {
+        font-size: 14px;
+        line-height: 1.7;
+        text-align: center; /* Centralizado melhora muito a leitura no celular */
+        padding: 0;
+    }
+}

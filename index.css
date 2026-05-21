@@ -43,32 +43,23 @@ body {
 
 .video-fundo {
     position: absolute;
-
     min-width: 100%;
     min-height: 100%;
-
     width: auto;
     height: auto;
-
     object-fit: cover;
-
     z-index: 1;
-
-    filter: blur(20px);
-
+    filter: blur(8px);
+    will-change: transform;
     transform: scale(1.05);
 }
 
 
 .tela::after {
     content: "";
-
     position: absolute;
-
     inset: 0;
-
     background-color: rgba(0, 0, 0, 0.5);
-
     z-index: 2;
 }
 
@@ -107,7 +98,8 @@ body {
     height: auto;
     object-fit: cover;
     z-index: 1;
-    filter: blur(15px);
+    filter: blur(8px);
+    will-change: transform;
     transform: scale(1.05);
 }
 
@@ -230,28 +222,20 @@ body {
 
 .menu-opcoes {
     position: absolute;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     width: 100%;
-
     display: flex;
-
     justify-content: space-evenly;
     align-items: center;
-
     z-index: 3;
 }
 
 .opcao {
     width: 25%;
-
     display: flex;
     justify-content: center;
-
     font-family: 'Orbitron', sans-serif;
     font-size: 25px;
     letter-spacing: 3px;
@@ -265,10 +249,7 @@ body {
 
 #opcao-favoritos{
     color: rgb(194, 165, 0);
-
     transition: 0.3s ease;
-    
-    /* Gradiente Dourado (ex: ouro claro, ouro escuro, ouro claro) */
     background: linear-gradient(
         to right, 
         #bf953f, 
@@ -277,22 +258,15 @@ body {
         #fbf5b7, 
         #cc973b
     );
-    
-    /* Tamanho aumentado para a animação funcionar */
     background-size: 200% auto;
-    
-    /* Aplica o gradiente dentro do texto */
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Animação */
     animation: brilhoDourado 3s linear infinite;
 }
 
 #opcao-sobre {
     transition: 0.3s ease;
-
     background: linear-gradient(
         90deg,
         #6fb7f5 0%,
@@ -301,47 +275,35 @@ body {
         #38bdf8 75%,
         #73b4ec 100%
     );
-
     background-size: 300% auto;
-
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
-
     animation: brilhoAzul 6s linear infinite;
 }
 
 .hover-area:hover #opcao-favoritos {
-
     text-shadow:
     0 0 10px rgb(194, 165, 0),
     0 0 20px rgb(194, 165, 0);
-
     color: rgb(194, 165, 0);
 }
 
 .hover-area:hover #opcao-sobre {
-
     text-shadow:
     0 0 10px #38bdf8,
     0 0 20px #38bdf8;
-
     color: #38bdf8;
 }
 
 .texto-opcao {
     color: white;
-
     transition: 0.3s ease;
-
     cursor: pointer;
 }
 
 .hover-area:hover .texto-opcao {
-
     transform: translateY(-8px) scale(1.05);
-
     text-shadow:
     0 0 10px white
 }
@@ -361,9 +323,7 @@ body {
 }
 
 .hover-area:hover .texto-oculto {
-
     opacity: 1;
-
     transform: translateY(0);
 }
 
@@ -371,10 +331,7 @@ body {
 
 #titulo-menu-favoritos {
     color: rgb(194, 165, 0);
-
     transition: 0.3s ease;
-    
-    /* Gradiente Dourado (ex: ouro claro, ouro escuro, ouro claro) */
     background: linear-gradient(
         to right, 
         #bf953f, 
@@ -383,57 +340,39 @@ body {
         #fbf5b7, 
         #cc973b
     );
-    
-    /* Tamanho aumentado para a animação funcionar */
     background-size: 200% auto;
-    
-    /* Aplica o gradiente dentro do texto */
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Animação */
     animation: brilhoDourado 3s linear infinite;
 }
 
 .galeria-clipes {
     display: flex;
     flex-wrap: wrap;
-
     justify-content: center;
     align-items: center;
     align-content: center;
-
     gap: 40px;
-
     width: 100%;
     height: 100vh;
-
     max-width: 1500px;
-
     margin: 0 auto;
 }
 
 .card-clipe {
     width: 320px;
-
     cursor: pointer;
-
     transition: 0.6s;
-
     display: flex;
     flex-direction: column;
-
     align-items: center;
 }
 
 .card-clipe video {
     width: 100%;
-
     border-radius: 20px;
-
     border: 2px solid rgba(255,255,255,.2);
-
     object-fit: cover;
 }
 
@@ -446,18 +385,13 @@ body {
 
 .card-clipe p {
     margin-top: 15px;
-
     height: 60px;
-
     color: white;
     font-family: 'Orbitron', sans-serif;
-
     text-align: center;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     line-height: 1.3;
 }
 .card-clipe:hover {
@@ -466,7 +400,6 @@ body {
 
 .card-clipe:hover video {
     border-color: white;
-
     box-shadow:
     0 0 20px rgba(255,255,255,.4);
 }
@@ -479,9 +412,7 @@ body {
 
 #titulo-menu-sobre {
     font-size: 23px;
-
     transition: 0.3s ease;
-
     background: linear-gradient(
         90deg,
         #6fb7f5 0%,
@@ -490,47 +421,34 @@ body {
         #38bdf8 75%,
         #73b4ec 100%
     );
-
     background-size: 300% auto;
-
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
-
     animation: brilhoAzul 6s linear infinite;
 }
 
 .sobre-container {
     width: 100%;
     height: 100vh;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     gap: 100px;
-
 }
 
 .fotos-perfil {
     display: flex;
     flex-direction: column;
-
     align-items: center;
-
     gap: 20px;
 }
 
 .foto-avatar {
     width: 280px;
     height: 280px;
-
     border-radius: 50%;
-
     border: 3px solid rgba(255, 255, 255, 0.8);
-
     object-fit: cover;
 }
 
@@ -541,15 +459,10 @@ body {
 
 .texto-sobre {
     color: white;
-
     font-family: 'Orbitron', sans-serif;
-
     font-size: 17px;
-
     letter-spacing: 2px;
-
     line-height: 1.8;
-
     max-width: 800px;
 }
 
@@ -728,4 +641,36 @@ body {
         text-align: center; /* Centralizado melhora muito a leitura no celular */
         padding: 0;
     }
+
+    .video-fundo,
+    #tela-inicial video{
+        filter: blur(3px);
+
+        transform:none !important;
+    }
+
+    #opcao-favoritos,
+    #opcao-sobre,
+    #titulo-menu-favoritos,
+    #titulo-menu-sobre{
+        animation:none;
+    }
+
+    .titulo-principal,
+    .texto-opcao,
+    .botao-entrar{
+
+        text-shadow:none;
+    }
+
+    .card-clipe:hover{
+
+        transform:none;
+    }
+
+    .card-clipe:hover video{
+
+        box-shadow:none;
+    }
+
 }
